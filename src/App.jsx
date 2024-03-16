@@ -40,10 +40,10 @@ const App = () => {
         )}
 
         {isLoggedIn && (
-          <Route path="/login" element={<Home />} />
+          <Route path="/login" element={<Home/>} />
         )}
         {isReg && (
-                    <Route path="/register" element={<Home />} />
+        <Route path="/register" element={<Home />} />
         )}
       </Routes>
     </Router>

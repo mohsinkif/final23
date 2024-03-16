@@ -14,7 +14,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <body
+    <div
       className="bg-cover bg-center h-screen flex items-center"
       style={{
         backgroundImage: "url('logo.avif')",
@@ -81,7 +81,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
           </form>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
