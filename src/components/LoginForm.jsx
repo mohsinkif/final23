@@ -1,56 +1,88 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-const LoginForm = ({setIsLoggedIn}) => {
-  const handleLogin=(e)=>{
-        e.preventDefault()
-        setIsLoggedIn(true)
-  }
+import React from 'react';
+
+const LoginForm = ({ setIsLoggedIn }) => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+    if (!username || !password) {
+      alert('Please fill all fields');
+      return;
+    }
+    setIsLoggedIn(true);
+  };
+
   return (
-    <>
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Log in to your account
-      </h2>
-    </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          {/* <label for="email-address" class="sr-only">Email address</label> */}
-          <input id="username" name="username" type="text" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="User Name"/>
-        </div>
-        <div>
-          <label for="password" class="sr-only">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+    <body
+      className="bg-cover bg-center h-screen flex items-center"
+      style={{
+        backgroundImage: "url('logo.avif')",
+        backgroundSize: 'cover',
+        minHeight: '100vh',
+      }}
+    >
+      <div className="container mx-auto p-4">
+        <div className="bg-white p-8 rounded shadow-md max-w-md mx-auto">
+          <h2 className="text-2xl font-bold mb-6">Login</h2>
+          <form onSubmit={handleLogin}>
+            <div className="mb-4">
+              <label
+                htmlFor="username"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Username:
+              </label>
+              <input
+                type="text"
+                required
+                id="username"
+                name="username"
+                className="w-full p-2 border rounded"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Password:
+              </label>
+              <input
+                type="password"
+                required
+                id="password"
+                name="password"
+                className="w-full p-2 border rounded"
+              />
+            </div>
+            <div className="flex items-center mb-4">
+              <input
+                type="checkbox"
+                id="remember"
+                name="remember"
+                className="mr-2"
+              />
+              <label htmlFor="remember" className="text-gray-600">
+                Remember me
+              </label>
+            </div>
+            <div className="mb-4">
+              <a href="#" className="text-blue-500 text-sm">
+                Forgot password?
+              </a>
+            </div>
+            <button
+              type="submit"
+              className="bg-green-500 hover:bg-green-600 text-white p-2 rounded w-full"
+            >
+              Login
+            </button>
+          </form>
         </div>
       </div>
+    </body>
+  );
+};
 
-      <div class="flex items-center justify-between">
-
-        <div class="text-sm">
-          <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-            Forgot your password?
-          </a>
-        </div>
-      </div>
-
-      <div>
-        <button onClick={handleLogin} type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-400 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-              <path fill-rule="evenodd" d="M4 8V6a6 6 0 1112 0v2h1a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1h1zm2-2v2h8V6a4 4 0 10-8 0z" clip-rule="evenodd" />
-            </svg>
-          </span>
-          Log in
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-    </>
-  )
-}
-
-export default LoginForm
+export default LoginForm;

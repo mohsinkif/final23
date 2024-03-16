@@ -3,6 +3,7 @@ import NavLink from "./CustomLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import Home from "./Home";
 
 const navLinks = [
   {
@@ -18,25 +19,30 @@ const navLinks = [
     title: "Contact",
     path: "#contact",
   },
+  {
+    title: "Harvester",
+    path: "#harvester",
+  },
 ];
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-transparent  bg-opacity-100">
+    <>
+       <nav className="fixed mx-auto border border-green-700 top-0 left-0 right-0 z-10 bg-gray-500  bg-opacity-100">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
           className="text-2xl text-secondary-400 md:text-5xl font-semibold"
         >
-          <img src="logo.avif" alt="" style={{width:"2rem"}} />
+            <p className="text-2xl text-white">Agri<span className="text-green-700">Drone</span> </p>
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
             <button
               onClick={() => setNavbarOpen(true)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
+              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-green-500 hover:border-white"
             >
               <Bars3Icon className="h-5 w-5" />
             </button>
@@ -61,7 +67,7 @@ const Navbar = () => {
       </div>
       {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
     </nav>
-  );
+ </> );
 };
 
 export default Navbar;
